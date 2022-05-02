@@ -1,6 +1,7 @@
 export interface IAppState {
     page: string;
     searchInput: string | null;
+    products: Product[] | null;
 }
 
 export interface ICarouselItemProps {
@@ -12,6 +13,13 @@ export interface ICarouselItemProps {
 
 export interface IProductCardProps {
     title: string;
-    imageUrl: string;
+    image: string;
+    price: number;
+}
+
+export interface Product {
+    id: number;
+    title: string;
+    image: string;
     price: number;
 }
