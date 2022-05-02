@@ -13,6 +13,9 @@ import { Product } from '../types/app';
 import { BackButton } from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import tw from 'twrnc';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCarts } from '../app/appSlice';
+import { ICart } from '../types/app';
 
 const styles = StyleSheet.create({
   image: {
@@ -29,6 +32,8 @@ export default function Cart() {
   const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
   const [rating, setRating] = useState<Product['rating']>();
+  const carts = useSelector((state: any) => state.app.carts as ICart[]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (productId) {
@@ -38,6 +43,10 @@ export default function Cart() {
       });
     }
   }, []);
+
+  const addProductToCart = () => {
+    dispatch(setCarts([...carts, { product: product, quantity: 1 }]));
+  };
 
   return (
     <SafeAreaView style={tw`h-full relative bg-zinc-100`}>
@@ -79,6 +88,7 @@ export default function Cart() {
         </View>
         <TouchableOpacity
           style={tw`mt-6 w-full bg-red-400 items-center rounded-2xl`}
+          onPress={addProductToCart}
         >
           <Text style={tw`py-3 text-lg font-semibold text-white`}>
             Add to cart
