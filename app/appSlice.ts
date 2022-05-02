@@ -3,6 +3,7 @@ import { IAppState } from "../types/app";
 
 const initialState: IAppState = {
     page: 'home',
+    searchInput: null,
 };
 
 const AppSlice = createSlice({
@@ -11,9 +12,12 @@ const AppSlice = createSlice({
     reducers: {
         setPage: (state, action) => {
             state.page = action.payload;
+        },
+        setSearchInput: (state, action) => {
+            state.searchInput = action.payload;
         }
     },
 });
 
-export const { setPage } = AppSlice.actions;
+export const { setPage, setSearchInput } = AppSlice.actions;
 export default AppSlice.reducer;

@@ -1,5 +1,6 @@
 export interface IAppState {
     page: string;
+    searchInput: string | null;
 }
 
 export interface ICarouselItemProps {
