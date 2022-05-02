@@ -2,11 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import tw from 'twrnc';
-
-interface SpinnerProps {
-  count: number;
-  setCount: (value: number) => void;
-}
+import { SpinnerProps } from '../types/app';
 
 const Spinner: React.FC<SpinnerProps> = ({ count, setCount }) => {
   return (
