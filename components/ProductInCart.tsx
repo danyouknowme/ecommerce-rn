@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
-import { Spinner } from '../components';
+import Spinner from './Spinner';
 import { Product } from '../types/app';
 import tw from 'twrnc';
 const styles = StyleSheet.create({
