@@ -4,7 +4,8 @@ import { IAppState } from "../types/app";
 const initialState: IAppState = {
     page: 'home',
     searchInput: null,
-    products: null
+    products: null,
+    carts: []
 };
 
 const AppSlice = createSlice({
@@ -19,9 +20,12 @@ const AppSlice = createSlice({
         },
         setProducts: (state, action) => {
             state.products = action.payload;
+        },
+        setCarts: (state, action) => {
+            state.carts = action.payload;
         }
     },
 });
 
-export const { setPage, setSearchInput, setProducts } = AppSlice.actions;
+export const { setPage, setSearchInput, setProducts, setCarts } = AppSlice.actions;
 export default AppSlice.reducer;
