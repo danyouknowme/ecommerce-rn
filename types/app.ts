@@ -2,6 +2,7 @@ export interface IAppState {
     page: string;
     searchInput: string | null;
     products: Product[] | null;
+    carts: ICart[] | null;
 }
 
 export interface ICarouselItemProps {
@@ -27,4 +28,9 @@ export interface Product {
         rate: number;
         count: number;
     };
+}
+
+export interface ICart {
+    product: Product;
+    quantity: number;
 }
