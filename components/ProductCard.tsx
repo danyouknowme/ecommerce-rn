@@ -12,22 +12,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProductCard: React.FC<IProductCardProps> = ({
-  title,
-  imageUrl,
-  price,
-}) => {
+const ProductCard: React.FC<IProductCardProps> = ({ title, image, price }) => {
   return (
     <View
       style={tw`flex-col items-end w-42 p-1 bg-white rounded-2xl shadow border border-zinc-100 my-2`}
     >
       <TouchableOpacity style={tw`mt-2 mr-2`}>
-        <FontAwesomeIcon name='heart' size={20} />
+        <FontAwesomeIcon name='heart' size={20} color='#bdbdbd' />
       </TouchableOpacity>
       <View style={tw`my-0 mx-auto w-32 h-32 my-4`}>
         <Image
           source={{
-            uri: imageUrl,
+            uri: image,
           }}
           style={styles.image}
         />
