@@ -9,3 +9,9 @@ export interface ICarouselItemProps {
     color: string;
     lastObject?: boolean;
 }
+
+export interface IProductCardProps {
+    title: string;
+    imageUrl: string;
+    price: number;
+}
