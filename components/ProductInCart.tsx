@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import Spinner from './Spinner';
 import { Product } from '../types/app';
 import tw from 'twrnc';
+
 const styles = StyleSheet.create({
   image: {
     width: '100%',
@@ -12,11 +13,9 @@ const styles = StyleSheet.create({
 });
 
 const ProductInCart: React.FC<{ product: Product }> = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
-
   return (
     <View
-      style={tw`flex-row px-3 py-2 border bg-white border-zinc-200 rounded-xl`}
+      style={tw`flex-row px-3 py-2 border bg-white border-zinc-200 rounded-xl mt-2`}
     >
       <View style={tw`w-18 h-28`}>
         <Image
@@ -27,12 +26,15 @@ const ProductInCart: React.FC<{ product: Product }> = ({ product }) => {
         />
       </View>
       <View style={tw`flex-1 ml-6 py-3 flex-col justify-between`}>
-        <Text numberOfLines={2} style={tw`font-semibold text-lg`}>
+        <Text
+          numberOfLines={2}
+          style={tw`font-semibold text-base text-zinc-700`}
+        >
           {product?.title}
         </Text>
         <View style={tw`flex-row justify-between items-center`}>
-          <Text style={tw`font-bold text-3xl`}>${'140'}</Text>
-          <Spinner count={quantity} setCount={setQuantity} />
+          <Text style={tw`font-bold text-xl`}>${product?.price}</Text>
+          <Spinner />
         </View>
       </View>
     </View>
