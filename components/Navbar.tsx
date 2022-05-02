@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
           <Text style={tw`ml-2 text-red-700 font-semibold`}>Home</Text>
         )}
       </View>
-      <TouchableOpacity onPress={() => navigateToAnotherPage('favourite')}>
+      <TouchableOpacity onPress={() => navigateToAnotherPage('')}>
         <FontAwesomeIcon name='heart' size={22} color='#bdbdbd' />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigateToAnotherPage('cart')}>
