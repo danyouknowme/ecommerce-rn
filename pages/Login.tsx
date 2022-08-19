@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, TouchableOpacity, TextInput, Pressable } from "react-native";
 import { useNavigate } from "react-router-native";
-import Feather from "react-native-vector-icons/Feather";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useDispatch } from "react-redux";
 import { HomeButton } from "../components";
+import { postLoginUser } from "../services/auth";
+import { setAuthUser } from "../app/appSlice";
+import Feather from "react-native-vector-icons/Feather";
 import tw from "twrnc";
 
 const Login: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [isHidingPassword, setIsHidingPassword] = useState<boolean>(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleClickButton = () => {
+    postLoginUser(username, password).then((res) => {
+      dispatch(setAuthUser(res.data));
+      navigate("/");
+    });
+  };
 
   return (
     <SafeAreaView style={tw`h-full relative bg-zinc-200 flex flex-col justify-center`}>
@@ -23,12 +35,15 @@ const Login: React.FC = () => {
         <TextInput
           style={tw`my-2 px-3 bg-slate-100 rounded-lg text-base w-full h-12`}
           placeholder="Username"
+          autoCapitalize="none"
+          onChangeText={(text: string) => setUsername(text)}
         />
         <View style={tw`relative my-2 bg-slate-100 rounded-lg w-full`}>
           <TextInput
             style={tw`w-full h-12 px-3 text-base`}
             placeholder="Password"
             secureTextEntry={isHidingPassword}
+            onChangeText={(text: string) => setPassword(text)}
           />
           <TouchableOpacity
             style={tw`absolute top-4 right-4`}
@@ -44,12 +59,12 @@ const Login: React.FC = () => {
         <View style={tw`flex flex-row justify-end w-full my-2`}>
           <Text style={tw`text-slate-600 font-semibold`}>Recovery Password</Text>
         </View>
-        <Pressable
-          onPress={() => console.log("click")}
+        <TouchableOpacity
+          onPress={handleClickButton}
           style={tw`w-full h-12 bg-red-400 flex items-center justify-center rounded-lg mt-6`}
         >
           <Text style={tw`text-white text-base font-semibold`}>Sign In</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
       <View style={tw`flex items-center`}>
         <View style={tw`flex flex-row justify-center`}>
