@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { View, Text, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { useNavigate } from "react-router-native";
 import { Navbar, Carousel, Searchbar, ProductCard } from "../components";
 import { getAllProducts } from "../services/product";
 import { useSelector, useDispatch } from "react-redux";
-import { setProducts } from "../app/appSlice";
+import { setAuthUser, setProducts } from "../app/appSlice";
 import { Product } from "../types/app";
+import { IUser } from "../types/user";
 import { AppDispatch } from "../app/store";
 import tw from "twrnc";
 import { checkFilteredSearchEngine } from "../utils/search";
 
 export default function Home() {
+  const authUser = useSelector((state: any) => state.app.authUser as IUser);
   const searchInput = useSelector((state: any) => state.app.searchInput);
   const products = useSelector((state: any) => state.app.products as Product[] | null);
   const dispatch = useDispatch<AppDispatch>();
@@ -39,8 +41,17 @@ export default function Home() {
       <ScrollView>
         <Searchbar />
         <View style={tw`mt-8 mb-5`}>
-          <Text style={tw`font-semibold text-2xl`}>Hello Danny &#128525;</Text>
-          <Text style={tw`text-base text-zinc-400`}>Lets gets somethings?</Text>
+          {authUser ? (
+            <Fragment>
+              <Text style={tw`font-semibold text-2xl`}>Hello {authUser.username} &#128525;</Text>
+              <Text style={tw`text-base text-zinc-400`}>Lets gets somethings?</Text>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Text style={tw`font-semibold text-2xl`}>Ecommuay 🛍</Text>
+              <Text style={tw`text-base text-zinc-400`}>Shopping online platform</Text>
+            </Fragment>
+          )}
         </View>
         <Carousel />
         <View style={tw`mt-6`}>
