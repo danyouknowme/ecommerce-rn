@@ -1,4 +1,3 @@
-export const checkFilteredSearchEngine = (productTitle: string, searchInput: string) => {
-    return productTitle.toLowerCase().includes(searchInput.toLowerCase());
-  };
-  
+export const checkFilteredSearchEngine = (productCategory: string, searchInput: string) => {
+  return productCategory.toLowerCase().includes(searchInput.toLowerCase());
+};

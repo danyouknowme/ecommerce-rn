@@ -1,26 +1,18 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
-import { useNavigate } from 'react-router-native';
-import { Navbar, Carousel, Searchbar, ProductCard } from '../components';
-import { getAllProducts } from '../services/product';
-import { useSelector, useDispatch } from 'react-redux';
-import { setProducts } from '../app/appSlice';
-import { Product } from '../types/app';
-import { AppDispatch } from '../app/store';
-import tw from 'twrnc';
-import { checkFilteredSearchEngine } from '../utils/search';
+import React, { useEffect } from "react";
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import { useNavigate } from "react-router-native";
+import { Navbar, Carousel, Searchbar, ProductCard } from "../components";
+import { getAllProducts } from "../services/product";
+import { useSelector, useDispatch } from "react-redux";
+import { setProducts } from "../app/appSlice";
+import { Product } from "../types/app";
+import { AppDispatch } from "../app/store";
+import tw from "twrnc";
+import { checkFilteredSearchEngine } from "../utils/search";
 
 export default function Home() {
   const searchInput = useSelector((state: any) => state.app.searchInput);
-  const products = useSelector(
-    (state: any) => state.app.products as Product[] | null
-  );
+  const products = useSelector((state: any) => state.app.products as Product[] | null);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -32,9 +24,7 @@ export default function Home() {
     } else {
       dispatch(
         setProducts(
-          products?.filter((product) =>
-            checkFilteredSearchEngine(product.title, searchInput)
-          )
+          products?.filter((product) => checkFilteredSearchEngine(product.category, searchInput))
         )
       );
     }
@@ -58,15 +48,8 @@ export default function Home() {
         </View>
         <View style={tw`flex-row flex-wrap justify-between mt-2 mb-6`}>
           {products?.map((product) => (
-            <TouchableOpacity
-              key={product.id}
-              onPress={() => navigateToProductPage(product.id)}
-            >
-              <ProductCard
-                title={product.title}
-                image={product.imagePath}
-                price={product.price}
-              />
+            <TouchableOpacity key={product.id} onPress={() => navigateToProductPage(product.id)}>
+              <ProductCard title={product.title} image={product.imagePath} price={product.price} />
             </TouchableOpacity>
           ))}
         </View>
