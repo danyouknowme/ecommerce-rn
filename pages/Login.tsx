@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { View, Text, SafeAreaView, TouchableOpacity, TextInput, Pressable } from "react-native";
 import { useNavigate } from "react-router-native";
 import Feather from "react-native-vector-icons/Feather";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { HomeButton } from "../components";
 import tw from "twrnc";
 
 const Login: React.FC = () => {
@@ -10,6 +12,9 @@ const Login: React.FC = () => {
 
   return (
     <SafeAreaView style={tw`h-full relative bg-zinc-200 flex flex-col justify-center`}>
+      <View style={tw`absolute top-12 left-4`}>
+        <HomeButton />
+      </View>
       <View style={tw`flex items-center`}>
         <Text style={tw`text-4xl font-semibold text-stone-600`}>Hello Again!</Text>
         <Text style={tw`text-xl text-stone-500`}>Welcome back you've been missed!</Text>
