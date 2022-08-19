@@ -1,6 +1,6 @@
-# Ecommerce React Native
+<h1 align="center">Ecommerce React Native 🛍</h1>
 
-Ecommerce application for practice build by React Native and using public products api from [fakestoreapi](https://fakestoreapi.com/).
+Ecommhuay is a ecommerce application for practice build by React Native and using public products api from [Ecommhuay API](https://github.com/danyouknowme/ecommhuay).
 
 ## Screenshot
 
