@@ -24,10 +24,8 @@ export interface Product {
     imagePath: string;
     price: number;
     description?: string;
-    rating?: {
-        rate: number;
-        count: number;
-    };
+    category: string;
+    amount: number;
 }
 
 export interface ICart {

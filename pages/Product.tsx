@@ -11,7 +11,6 @@ import { useParams } from 'react-router-native';
 import { getProductById } from '../services/product';
 import { Product } from '../types/app';
 import { BackButton } from '../components';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import tw from 'twrnc';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCarts } from '../app/appSlice';
@@ -31,7 +30,6 @@ const styles = StyleSheet.create({
 export default function Cart() {
   const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
-  const [rating, setRating] = useState<Product['rating']>();
   const carts = useSelector((state: any) => state.app.carts as ICart[]);
   const dispatch = useDispatch();
 
@@ -39,7 +37,6 @@ export default function Cart() {
     if (productId) {
       getProductById(productId).then((res) => {
         setProduct(res.data);
-        setRating(res.data.rating);
       });
     }
   }, []);
@@ -65,11 +62,13 @@ export default function Cart() {
         <Text style={tw`font-semibold text-lg`}>{product?.title}</Text>
         <View style={tw`flex-row justify-between items-center mt-4`}>
           <Text style={tw`font-bold text-xl`}>{product?.price} ฿</Text>
-          <Text style={tw`font-semibold`}>Available in stock</Text>
+          {product && product.amount > 0 && (
+            <Text style={tw`font-semibold`}>Available in stock</Text>
+          )}
         </View>
         <View style={tw`flex-col mt-4`}>
           <Text style={tw`font-semibold text-xl`}>About</Text>
-          <Text numberOfLines={4} style={tw`mt-2`}>
+          <Text style={tw`mt-2`}>
             {product?.description}
           </Text>
         </View>
