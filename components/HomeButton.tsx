@@ -8,7 +8,7 @@ const HomeButton: React.FC = () => {
   const navigate = useNavigate();
   return (
     <TouchableOpacity style={tw`bg-zinc-300 rounded`} onPress={() => navigate("/")}>
-      <FontAwesome name="home" size={36} color="#141414" style={tw`py px-1`} />
+      <FontAwesome name="home" size={36} color="#141414" style={tw`p-1`} />
     </TouchableOpacity>
   );
 };
