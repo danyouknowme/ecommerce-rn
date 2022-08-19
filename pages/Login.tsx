@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, SafeAreaView, TouchableOpacity, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  TextInput,
+  Pressable,
+  Alert,
+} from "react-native";
 import { useNavigate } from "react-router-native";
 import { useDispatch } from "react-redux";
 import { HomeButton } from "../components";
@@ -16,6 +24,10 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickButton = () => {
+    if (username === "" || password === "") {
+      Alert.alert("Username or password should not be empty!");
+      return;
+    }
     postLoginUser(username, password).then((res) => {
       dispatch(setAuthUser(res.data));
       navigate("/");
