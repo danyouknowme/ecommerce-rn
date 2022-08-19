@@ -30,7 +30,9 @@ const Profile: React.FC = () => {
 
   return (
     <SafeAreaView style={tw`h-full mx-5 relative flex flex-col`}>
-      <BackButton />
+      <View style={tw`z-10`}>
+        <BackButton />
+      </View>
       <View style={tw`flex-1 flex items-center justify-end`}>
         <View style={tw`flex items-center justify-center w-60 h-60 rounded-full border border-4`}>
           <Image
