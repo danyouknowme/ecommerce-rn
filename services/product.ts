@@ -1,15 +1,11 @@
 import axios from 'axios';
 
-export const getAllProducts = () => {
-  const response = axios.get('https://fakestoreapi.com/products');
+export const getAllProducts = async () => {
+  const response = await axios.get('https://ecommhuay.herokuapp.com/api/v1/products');
   return response;
 };
 
-export const getProductById = (id: string) => {
-  const response = axios.get(`https://fakestoreapi.com/products/${id}`);
+export const getProductById = async (id: string) => {
+  const response = await axios.get(`https://ecommhuay.herokuapp.com/api/v1/products/${id}`);
   return response;
-};
-
-export const checkFilteredSearchEngine = (productTitle: string, searchInput: string) => {
-  return productTitle.toLowerCase().includes(searchInput.toLowerCase());
 };

@@ -21,7 +21,7 @@ export interface IProductCardProps {
 export interface Product {
     id: number;
     title: string;
-    image: string;
+    imagePath: string;
     price: number;
     description?: string;
     rating?: {

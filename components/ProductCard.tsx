@@ -32,7 +32,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ title, image, price }) => {
         <Text numberOfLines={2} style={tw`text-lg font-semibold text-zinc-500`}>
           {title}
         </Text>
-        <Text style={tw`text-xl font-extrabold`}>${price}</Text>
+        <Text style={tw`text-xl font-extrabold`}>{price} ฿</Text>
       </View>
     </View>
   );

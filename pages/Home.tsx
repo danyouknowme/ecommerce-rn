@@ -8,12 +8,13 @@ import {
 } from 'react-native';
 import { useNavigate } from 'react-router-native';
 import { Navbar, Carousel, Searchbar, ProductCard } from '../components';
-import { checkFilteredSearchEngine, getAllProducts } from '../services/product';
+import { getAllProducts } from '../services/product';
 import { useSelector, useDispatch } from 'react-redux';
 import { setProducts } from '../app/appSlice';
 import { Product } from '../types/app';
 import { AppDispatch } from '../app/store';
 import tw from 'twrnc';
+import { checkFilteredSearchEngine } from '../utils/search';
 
 export default function Home() {
   const searchInput = useSelector((state: any) => state.app.searchInput);
@@ -63,7 +64,7 @@ export default function Home() {
             >
               <ProductCard
                 title={product.title}
-                image={product.image}
+                image={product.imagePath}
                 price={product.price}
               />
             </TouchableOpacity>

@@ -56,28 +56,15 @@ export default function Cart() {
       <View style={tw`relative w-full h-3/5 bg-white rounded-b-full -mt-12`}>
         <Image
           source={{
-            uri: product?.image,
+            uri: product?.imagePath,
           }}
           style={styles.image}
         />
       </View>
       <View style={tw`flex-col mt-6 mx-6`}>
         <Text style={tw`font-semibold text-lg`}>{product?.title}</Text>
-        <View style={tw`flex-row items-center mt-2 mb-4`}>
-          {rating?.rate &&
-            [...Array(5)].map((_, index) => {
-              return index + 1 <= Math.round(rating?.rate) ? (
-                <Ionicons name='star' size={20} key={index} color='#D5AB55' />
-              ) : (
-                <Ionicons name='star' size={20} key={index} color='#d4d4d8' />
-              );
-            })}
-          <Text style={tw`ml-6 text-base text-zinc-600`}>
-            ({rating?.count} Reviews)
-          </Text>
-        </View>
-        <View style={tw`flex-row justify-between items-center`}>
-          <Text style={tw`font-bold text-xl`}>${product?.price}</Text>
+        <View style={tw`flex-row justify-between items-center mt-4`}>
+          <Text style={tw`font-bold text-xl`}>{product?.price} ฿</Text>
           <Text style={tw`font-semibold`}>Available in stock</Text>
         </View>
         <View style={tw`flex-col mt-4`}>

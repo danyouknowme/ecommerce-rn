@@ -20,7 +20,7 @@ const ProductInCart: React.FC<{ product: Product }> = ({ product }) => {
       <View style={tw`w-18 h-28`}>
         <Image
           source={{
-            uri: product?.image,
+            uri: product?.imagePath,
           }}
           style={styles.image}
         />
@@ -33,7 +33,7 @@ const ProductInCart: React.FC<{ product: Product }> = ({ product }) => {
           {product?.title}
         </Text>
         <View style={tw`flex-row justify-between items-center`}>
-          <Text style={tw`font-bold text-xl`}>${product?.price}</Text>
+          <Text style={tw`font-bold text-xl`}>{product?.price} ฿</Text>
           <Spinner />
         </View>
       </View>
