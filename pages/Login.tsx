@@ -48,7 +48,7 @@ const Login: React.FC = () => {
       </View>
       <View style={tw`flex items-center`}>
         <View style={tw`flex flex-row justify-center`}>
-          <Text>Not a member?</Text>
+          <Text>Doesn't have any account?</Text>
           <TouchableOpacity style={tw`ml-2`} onPress={() => navigate("/register")}>
             <Text style={tw`text-sky-600`}>Sign up now</Text>
           </TouchableOpacity>
