@@ -18,8 +18,8 @@ const Login: React.FC = () => {
           />
         </View>
         <View style={tw`absolute top-2/3 flex items-center`}>
-          <Text style={tw`text-2xl font-medium`}>Ecommuay 🛍</Text>
-          <Text>Online shopping platform</Text>
+          <Text style={tw`text-4xl font-semibold`}>Ecommuay 🛍</Text>
+          <Text style={tw`text-base mt-2`}>Online shopping platform</Text>
         </View>
         <View
           style={tw`absolute bottom-16 flex flex-row shadow bg-slate-100 rounded-md border border-zinc-100`}
