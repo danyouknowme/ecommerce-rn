@@ -1,4 +1,4 @@
-<h1 align="center">Ecommerce React Native 🛍</h1>
+<h1 align="center">Ecommhuay React Native 🛍</h1>
 
 Ecommhuay is a ecommerce application for practice build by React Native and using public products api from [Ecommhuay API](https://github.com/danyouknowme/ecommhuay).
 
